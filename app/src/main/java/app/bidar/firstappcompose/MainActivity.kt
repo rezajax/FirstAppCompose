@@ -1,13 +1,15 @@
 package app.bidar.firstappcompose
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +18,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -52,6 +55,35 @@ fun BirthDayWhitImage (message: String, from: String) {
             contentScale = ContentScale.Crop
         )
         BirthDay(message = message, from = from)
+
+    }
+}
+
+@Composable
+fun BtnChangeLanguage () {
+    Button(
+        onClick = {
+                  Toast.makeText(MainActivity(), "hi", Toast.LENGTH_SHORT).show()
+        },
+        // Uses ButtonDefaults.ContentPadding by default
+        contentPadding = PaddingValues(
+            start = 20.dp,
+            top = 12.dp,
+            end = 20.dp,
+            bottom = 12.dp
+        )
+//        ),
+//        modifier = Modifier
+//            .wrapContentWidth(Alignment.Top)
+    ) {
+        // Inner content including an icon and a text label
+        Icon(
+            Icons.Filled.Favorite,
+            contentDescription = "Favorite",
+            modifier = Modifier.size(ButtonDefaults.IconSize)
+        )
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        Text("Like")
     }
 }
 
@@ -76,9 +108,12 @@ fun BirthDay(message: String, from: String) {
                 .wrapContentWidth(Alignment.End)
                 .padding(start = 16.dp, end = 16.dp)
         )
+
+        BtnChangeLanguage()
     }
 
 }
+
 
 @Preview(showBackground = true)
 @Composable
