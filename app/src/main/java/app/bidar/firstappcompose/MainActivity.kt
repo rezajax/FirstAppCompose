@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 
@@ -61,30 +62,7 @@ fun BirthDayWhitImage (message: String, from: String) {
 
 @Composable
 fun BtnChangeLanguage () {
-    Button(
-        onClick = {
-                  Toast.makeText(MainActivity(), "hi", Toast.LENGTH_SHORT).show()
-        },
-        // Uses ButtonDefaults.ContentPadding by default
-        contentPadding = PaddingValues(
-            start = 20.dp,
-            top = 12.dp,
-            end = 20.dp,
-            bottom = 12.dp
-        )
-//        ),
-//        modifier = Modifier
-//            .wrapContentWidth(Alignment.Top)
-    ) {
-        // Inner content including an icon and a text label
-        Icon(
-            Icons.Filled.Favorite,
-            contentDescription = "Favorite",
-            modifier = Modifier.size(ButtonDefaults.IconSize)
-        )
-        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-        Text("Like")
-    }
+
 }
 
 
@@ -108,8 +86,31 @@ fun BirthDay(message: String, from: String) {
                 .wrapContentWidth(Alignment.End)
                 .padding(start = 16.dp, end = 16.dp)
         )
-
-        BtnChangeLanguage()
+        val context = LocalContext.current
+        Button(
+            onClick = {
+                Toast.makeText(context, "hi", Toast.LENGTH_SHORT).show()
+            },
+            // Uses ButtonDefaults.ContentPadding by default
+            contentPadding = PaddingValues(
+                start = 20.dp,
+                top = 12.dp,
+                end = 20.dp,
+                bottom = 12.dp
+            )
+//        ),
+//        modifier = Modifier
+//            .wrapContentWidth(Alignment.Top)
+        ) {
+            // Inner content including an icon and a text label
+            Icon(
+                Icons.Filled.Favorite,
+                contentDescription = "Favorite",
+                modifier = Modifier.size(ButtonDefaults.IconSize)
+            )
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+            Text("Like")
+        }
     }
 
 }
